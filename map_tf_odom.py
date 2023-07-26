@@ -54,3 +54,21 @@ if __name__ == "__main__":
     rospy.Subscriber("/odom", Odometry, odom_callback)
     rospy.spin()
     cv2.destroyAllWindows()
+'''
+        crop_size_forward = 50
+        crop_size_backward = 20
+
+        forward_x_min, forward_x_max = max(0, x), min(map_image.shape[1], x + crop_size_forward)
+        backward_x_min, backward_x_max = max(0, x - crop_size_backward), min(map_image.shape[1], x)
+
+        forward_y_min, forward_y_max = max(0, y), min(map_image.shape[0], y + crop_size_forward)
+        backward_y_min, backward_y_max = max(0, y - crop_size_backward), min(map_image.shape[0], y)
+
+        cropped_map_image = map_image[backward_y_min:forward_y_max, backward_x_min:forward_x_max].copy()
+
+        # Adjust the arrow position according to the cropping
+        adjusted_x = crop_size_backward
+        adjusted_y = crop_size_backward
+        draw_arrow(cropped_map_image, adjusted_x, adjusted_y, np.degrees(yaw), length=20, color=(0, 0, 255), thickness=2)
+
+'''
