@@ -1,0 +1,24 @@
+Formula to Calculate x-coordinate of Top-Left Corner of Rotated Rectangle
+Description:
+The formula x0 = x + w/2 * cos(θ) - h/2 * sin(θ) is used to calculate the x-coordinate (x0) of the top-left corner of a rotated rectangle. This calculation is essential when drawing a rotated rectangle on an image, map, or visualization, where the center of the rectangle (x, y), its size (w, h), and its orientation (θ, also known as yaw) are known.
+
+Variables:
+
+x0: x-coordinate of the top-left corner of the rotated rectangle.
+x: x-coordinate of the center of the rectangle.
+w: Width of the rectangle.
+h: Height of the rectangle.
+θ (yaw): Angle of orientation of the rectangle, measured in radians. It determines how much the rectangle is rotated counterclockwise from its original orientation.
+Step-by-Step Calculation:
+
+w/2 * cos(θ): This term represents the x-offset of the top-left corner from the center of the rectangle. It's half of the rectangle's width (w/2) multiplied by the cosine of the rotation angle (cos(θ)). The cosine function gives us the horizontal displacement caused by the rotation.
+
+h/2 * sin(θ): This term represents the y-offset of the top-left corner from the center of the rectangle. It's half of the rectangle's height (h/2) multiplied by the sine of the rotation angle (sin(θ)). The sine function gives us the vertical displacement caused by the rotation.
+
+x + w/2 * cos(θ) - h/2 * sin(θ): Combining the two offsets, this expression calculates the final x-coordinate (x0) of the top-left corner of the rotated rectangle. It adds the x-coordinate of the center of the rectangle (x) to the x-offset (w/2 * cos(θ)) and subtracts the y-offset (h/2 * sin(θ)) from it.
+
+Application:
+The formula is used in various computer vision, image processing, and robotics applications. It allows accurate positioning of the top-left corner of a rotated rectangle, which is crucial for drawing and visualizing the orientation of objects (e.g., robots) on images or occupancy grid maps.
+
+Note:
+Make sure to provide the angle θ in radians, as the trigonometric functions (cos and sin) expect angles in radians, not degrees. If θ is in degrees, it should be converted to radians before using this formula.
