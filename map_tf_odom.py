@@ -26,7 +26,7 @@ def map_callback(msg):
 
     map_image = cv2.cvtColor(normalized_map, cv2.COLOR_GRAY2BGR)
 
-    map_image[np.where((map_data >= 1) & (map_data <= 100))] = 240
+    map_image[np.where((map_data >= 1) & (map_data <= 100))] = 255
     map_image[np.where(map_data == -1)] = 101
 
     map_resolution = msg.info.resolution
@@ -45,7 +45,7 @@ def odom_callback(msg):
 
         draw_arrow(map_image, x, y, np.degrees(yaw))
 
-        cv2.imshow('Occupancy Grid Map', map_image)
+        cv2.imshow('Occupancy Grid Map', cv2.resize(cv2.flip(map_image,0), None, fx = 4, fy = 4))
         cv2.waitKey(1)
 
 if __name__ == "__main__":
